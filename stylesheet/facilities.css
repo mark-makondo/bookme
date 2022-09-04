@@ -1,0 +1,13 @@
+.p-facilities {
+    position: relative;
+}
+
+.p-facilities .pop {
+    transition: all var(--anim-speed) ease-out;
+}
+
+.p-facilities .pop:hover {
+    border-top-color: var(--teal) !important;
+    transform: scale(1.03);
+    transition: all var(--anim-speed) ease-in;
+}

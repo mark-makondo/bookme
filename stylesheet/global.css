@@ -1,6 +1,12 @@
+:root {
+	--teal: #2ec1ac;
+	--teal_hover: #279e8c;
+	--h-font: 'Merienda', cursive;
+	--anim-speed: .25s;
+}
+
 * {
 	font-family: 'Poppins', sans-serif;
-	--h-font: 'Merienda', cursive;
 }
 
 input[type='number']::-webkit-inner-spin-button,
@@ -16,9 +22,15 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .custom-bg {
-	background-color: #2ec1ac;
+	background-color: var(--teal);
 }
 
 .custom-bg:hover {
-	background-color: #279e8c;
+	background-color: var(--teal_hover);
+}
+
+.h-line {
+	width: 150px;
+	margin: 0 auto;
+	height: 1.7px;
 }

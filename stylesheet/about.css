@@ -1,0 +1,7 @@
+.p-about {
+    position: relative;
+}
+
+.p-about .box {
+    border-top-color: var(--teal) !important;
+}

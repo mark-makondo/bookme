@@ -3,6 +3,8 @@
     <head>
         <?php include 'inc/head-meta.php' ?>
         <?php include 'inc/links.php' ?>
+        
+        <link href="stylesheet/home.css" rel="stylesheet" type="text/css">
     </head>
     <body class="p-home bg-light">
         <?php include 'inc/header.php' ?>
