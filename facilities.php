@@ -3,10 +3,13 @@
     <head>
         <?php include 'inc/head-meta.php' ?>
         <?php include 'inc/links.php' ?>
+                
+        <link href="stylesheet/facilities.css" rel="stylesheet" type="text/css">
     </head>
     <body class="p-facilities bg-light">
         <?php include 'inc/header.php' ?>
-
+        <?php include 'page-sections/facilities/header.php' ?>
+        <?php include 'page-sections/facilities/items.php' ?>
         <?php include 'inc/footer.php' ?>
     </body>
 </html>

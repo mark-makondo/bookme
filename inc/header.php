@@ -7,19 +7,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active me-2" aria-current="page" href="/book-me">Home</a>
+          <a class="nav-link active me-2" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="/book-me/rooms.php">Rooms</a>
+          <a class="nav-link me-2" href="rooms.php">Rooms</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="/book-me/facilities.php">Facilities</a>
+          <a class="nav-link me-2" href="facilities.php">Facilities</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="/book-me/contact-us.php">Contact us</a>
+          <a class="nav-link me-2" href="contact-us.php">Contact us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="/book-me/about.php">About</a>
+          <a class="nav-link me-2" href="about.php">About</a>
         </li>
       </ul>
       <div class="d-flex gap-1">

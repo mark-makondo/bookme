@@ -10,11 +10,11 @@
         </div>
         <div class="col-lg-4 p-4 d-flex flex-column">
             <h5 class="mb-3">Links</h5>
-            <a href="/book-me" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a>
-            <a href="/book-me/rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a>
-            <a href="/book-me/facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a>
-            <a href="/book-me/contact-us.php" class="d-inline-block mb-2 text-dark text-decoration-none">Contact us</a>
-            <a href="/book-me/about.php" class="d-inline-block mb-2 text-dark text-decoration-none">About</a>
+            <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a>
+            <a href="rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a>
+            <a href="facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a>
+            <a href="contact-us.php" class="d-inline-block mb-2 text-dark text-decoration-none">Contact us</a>
+            <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none">About</a>
         </div>
         <div class="col-lg-4 p-4 d-flex flex-column">
             <h5 class="mb-3">Follow us</h5>

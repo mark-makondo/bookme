@@ -1,11 +1,15 @@
-.availability-form {
+.p-home {
+    position: relative;
+}
+
+.p-home .availability-form {
     position: relative;
     margin-top: -50px;
     z-index: 2;
 }
 
 @media screen and (max-width: 575px) {
-    .availability-form {
+    .p-home .availability-form {
         margin-top: 25px;
         padding: 0 35px;
     }
