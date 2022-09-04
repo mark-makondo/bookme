@@ -7,21 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active me-2" aria-current="page" href="#">Home</a>
+          <a class="nav-link active me-2" aria-current="page" href="/book-me">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="#">Link</a>
+          <a class="nav-link me-2" href="/book-me/rooms.php">Rooms</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="#">Rooms</a>
+          <a class="nav-link me-2" href="/book-me/facilities.php">Facilities</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="#">Facilities</a>
+          <a class="nav-link me-2" href="/book-me/contact-us.php">Contact us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="#">About</a>
+          <a class="nav-link me-2" href="/book-me/about.php">About</a>
         </li>
-      
       </ul>
       <div class="d-flex gap-1">
         <button type="button" class="btn btn-outline-dark shadow-none me-lg-2 me-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>

@@ -1,4 +1,4 @@
-<footer class="container-fluid bg-white mt-5">
+<footer class="footer container-fluid bg-white mt-5">
     <div class="row">
         <div class="col-lg-4 p-4">
             <h3 class="h-font fw-bold fs-3 mb-2">BOOKME</h3>
@@ -10,11 +10,11 @@
         </div>
         <div class="col-lg-4 p-4 d-flex flex-column">
             <h5 class="mb-3">Links</h5>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Contact us</a>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">About</a>
+            <a href="/book-me" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a>
+            <a href="/book-me/rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a>
+            <a href="/book-me/facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a>
+            <a href="/book-me/contact-us.php" class="d-inline-block mb-2 text-dark text-decoration-none">Contact us</a>
+            <a href="/book-me/about.php" class="d-inline-block mb-2 text-dark text-decoration-none">About</a>
         </div>
         <div class="col-lg-4 p-4 d-flex flex-column">
             <h5 class="mb-3">Follow us</h5>
@@ -36,3 +36,4 @@
         </div>
     </div>
 </footer>
+<h6 class="text-center bg-dark text-white p-3 m-0">Designed & Developed by MADD.Dev</h6>
