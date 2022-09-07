@@ -1,0 +1,16 @@
+.admin-login-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.admin-login-panel .login-form {
+    min-width: 20rem;
+    height: min-content;
+}
+
+.admin-login-panel .login-alert {
+    position: absolute;
+    bottom: 0;
+}
