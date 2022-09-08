@@ -17,7 +17,7 @@
         session_regenerate_id(true);
     }
 
-    function alert($type = 'success', $message, $class) {
+    function customAlert($type = 'success', $message, $class) {
         $typeClass = ($type == 'success') ? "alert-success" : 'alert-warning'; 
 
         echo <<< alert

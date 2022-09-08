@@ -4,5 +4,17 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" defer></script>
 
 <!-- My Scripts -->
-<script src="js/index.js" defer></script>
-                
+<script>
+    function customAlert(type = "success", message = "",className ="") {
+        let bsClass = (type == 'success') ? "alert-success" : 'alert-warning';  
+        let element = document.createElement('div');
+
+        element.innerHTML = `
+            <div class="alert ${bsClass} alert-dismissible fade show ${className}" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div
+        `
+        document.body.append(element);
+    }
+</script>

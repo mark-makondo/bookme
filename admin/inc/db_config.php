@@ -43,4 +43,28 @@
 
         return false;
     }
+
+    function update($sql, $values, $datatypes) {
+        $conn = $GLOBALS['connect'];
+        $stmt = mysqli_prepare($conn, $sql);
+
+        if($stmt) {
+            mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+            $execute = mysqli_stmt_execute($stmt);
+
+            if($execute) {
+                $res = mysqli_stmt_affected_rows($stmt);
+                mysqli_stmt_close($stmt);
+                return $res;
+            } else {
+                mysqli_stmt_close($stmt);
+                die("Query cannot be executed - Update");
+            }
+            
+        }else {
+            die("Query cannot be prepared - Update");
+        }
+
+        return false;
+    }
 ?>

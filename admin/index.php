@@ -55,9 +55,9 @@
                     $_SESSION['adminId'] = $row['sr_no'];
 
                     redirect('dashboard.php');
-                    alert('success', "<strong>Login Success!</strong>", 'login-alert');
+                    customAlert('success', "<strong>Login Success!</strong>", 'login-alert');
                 }else {
-                    alert('error', "<strong>Login Failed!</strong> Invalid username or password. Please try again.", 'login-alert');
+                    customAlert('error', "<strong>Login Failed!</strong> Invalid username or password. Please try again.", 'login-alert');
                 }
             }
         ?>

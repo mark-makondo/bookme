@@ -3,7 +3,7 @@
 	--teal_hover: #279e8c;
 	--h-font: 'Merienda', cursive;
 	--anim-speed: .25s;
-}
+} 
 
 * {
 	font-family: 'Poppins', sans-serif;
@@ -15,6 +15,10 @@ input[type='number']::-webkit-outer-spin-button {
 	-moz-appearance: none;
 	appearance: none;
 	margin: 0;
+}
+
+body {
+	height: 100vh;	
 }
 
 .h-font {
@@ -33,6 +37,11 @@ input[type='number']::-webkit-outer-spin-button {
 	width: 150px;
 	margin: 0 auto;
 	height: 1.7px;
+}
+
+.bottom-alert {
+	position: fixed;
+	bottom: 0;
 }
 
 #admin-panel-menu {
