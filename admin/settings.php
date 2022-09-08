@@ -9,7 +9,7 @@
 <html lang="en">
     <head>
         <?php include "inc/head-meta.php" ?>
-        <title>Admin Panel - Dashboard</title>
+        <title>Admin Panel - Settings</title>
 
         <?php include "inc/links.php" ?>
         <?php include "inc/scripts.php" ?>
