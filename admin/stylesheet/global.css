@@ -3,7 +3,7 @@
 	--teal_hover: #279e8c;
 	--h-font: 'Merienda', cursive;
 	--anim-speed: .25s;
-}
+} 
 
 * {
 	font-family: 'Poppins', sans-serif;
@@ -15,6 +15,20 @@ input[type='number']::-webkit-outer-spin-button {
 	-moz-appearance: none;
 	appearance: none;
 	margin: 0;
+}
+
+body {
+	height: 100vh;	
+	overflow: hidden;
+}
+
+.z-index-big {
+	z-index: 1000;
+}
+
+.main-content {
+	overflow: hidden auto;
+	height: calc(100vh - 4.625rem);
 }
 
 .h-font {
@@ -33,4 +47,26 @@ input[type='number']::-webkit-outer-spin-button {
 	width: 150px;
 	margin: 0 auto;
 	height: 1.7px;
+}
+
+.bottom-alert {
+	position: fixed;
+	bottom: 0;
+	z-index: 1001;
+}
+
+#admin-panel-menu {
+    position: fixed;
+    height: 100%;
+}
+
+@media screen and (max-width: 992px) {
+    #admin-panel-menu {
+        height: auto;
+		width: 100%;
+    }
+    
+    #admin-panel-content {
+        margin-top: 60px ;
+    }
 }

@@ -6,7 +6,8 @@
     </head>
     <body class="p-rooms bg-light">
         <?php include 'inc/header.php' ?>
-
+        <?php include 'page-sections/rooms/header.php' ?>
+        <?php include 'page-sections/rooms/items.php' ?>
         <?php include 'inc/footer.php' ?>
     </body>
 </html>
