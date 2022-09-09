@@ -19,8 +19,8 @@
     <body class="bg-light admin-panel-dashboard">
         <?php include 'inc/header.php' ?>
         <div class="container-fluid admin-panel-dashboard__main-content" id="admin-panel-content">
-            <div class="row">
-                <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+            <div class="row main-content">
+                <div class="col-lg-10 ms-auto p-4">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas iusto error quibusdam facilis labore, 
                     libero laborum adipisci blanditiis? Quibusdam hic ratione sint non. Vitae sunt eos quidem vel incidunt ex!
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas iusto error quibusdam facilis labore, 

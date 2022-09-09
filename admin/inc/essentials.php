@@ -3,6 +3,7 @@
         echo "<script>
             window.location.href = `$url`;
         </script>";
+        exit;
     }
     
     function verifyUserDashboard() {
@@ -13,7 +14,6 @@
         if(!($isValidUser)) {
             redirect('index.php');
         };
-
         session_regenerate_id(true);
     }
 
