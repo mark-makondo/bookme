@@ -1,7 +1,8 @@
 let generalData,  
     contactDetailsData,
     generalSettingsForm = document.getElementById('general-settings-form'),
-    contactSettingsForm = document.getElementById('contact-settings-form');
+    contactSettingsForm = document.getElementById('contact-settings-form'),
+    teamSettingsForm = document.getElementById('manage-team-settings-form');
 
 let address = document.getElementById('address'),
     email = document.getElementById('email'),
@@ -22,6 +23,9 @@ let addressInput = document.getElementById('address-input'),
     facebookInput = document.getElementById('facebook-input'),
     twitterInput = document.getElementById('twitter-input'),
     instagramInput = document.getElementById('instagram-input');
+
+let memberNameInput = document.getElementById('member-name-input'),
+    memberPictureInput = document.getElementById('member-picture-input');
 
 // ------------------------------- GENERAL SETTINGS
 
@@ -196,7 +200,81 @@ function onContactSettingsSave(queries) {
     xhr.send(xhrData+'&updateContactSettings');
 }
 
+// ------------------------------- TEAM SETTINGS
+
+teamSettingsForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    addMember();
+})
+const getMembers = () => new Promise((res)=> {
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "ajax/settings_crud.php", true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send('getMembers');
+
+    xhr.onload = function() {
+        let teamDataElement = document.getElementById('team-data');
+        teamDataElement.innerHTML = this.responseText;
+        res({ loaded: true });
+    }
+})
+function addMember() {
+    let pictureData = new FormData();
+    pictureData.append('name', memberNameInput.value);
+    pictureData.append('picture', memberPictureInput.files[0]);
+    pictureData.append('addMember', '');
+
+    let xhr = new XMLHttpRequest();
+    
+    xhr.open("POST", "ajax/settings_crud.php", true);
+    
+    xhr.onload = function() {
+        console.info(this.responseText);
+        let teamSettingsAddModalEl = document.getElementById('add-team-setting');
+        let teamSettingsAddModal = bootstrap.Modal.getInstance(teamSettingsAddModalEl);
+
+        teamSettingsAddModal.hide();
+        
+        if(this.responseText == 'inv_img') 
+            customAlert('error', '<strong>Error!</strong> Only JPG & PNG are allowed.', 'bottom-alert');
+        if(this.responseText == 'inv_size') 
+            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'bottom-alert');
+        if(this.responseText == 'upd_failed') 
+            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'bottom-alert');
+        else {
+            customAlert('success', 'Team Member added!', 'bottom-alert');
+            memberNameInput.value='';
+            memberPictureInput.value='';
+            getMembers();
+        }
+    }
+    
+    xhr.send(pictureData);
+}
+function removeMember(val) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "ajax/settings_crud.php", true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if(this.responseText==1) {
+            customAlert('success', 'Team Member removed!', 'bottom-alert');
+            getMembers();
+        }else {
+            customAlert('error', '<strong>Error!</strong> Server down!', 'bottom-alert');
+        }
+    }
+    xhr.send('removeMember='+val);
+}
+function onAddTeamSettingsModalCancel(nameInput, pictureInput) {
+    nameInput.value = '';
+    pictureInput.value = '';
+}
+
 window.onload = async function() {
     await getGeneral();
     await getContact();
+    await getMembers();
 }

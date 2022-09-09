@@ -19,7 +19,6 @@
         }
         return $data;
     }
-
     function select($sql, $values, $datatypes) {
         $conn = $GLOBALS['connect'];
         $stmt = mysqli_prepare($conn, $sql);
@@ -43,7 +42,11 @@
 
         return false;
     }
-
+    function selectAll($table) {
+        $con = $GLOBALS['connect'];
+        $res = mysqli_query($con, "SELECT * FROM $table");
+        return $res;
+    }
     function update($sql, $values, $datatypes) {
         $conn = $GLOBALS['connect'];
         $stmt = mysqli_prepare($conn, $sql);
@@ -67,4 +70,52 @@
 
         return false;
     }
+    function insert($sql, $values, $datatypes) {
+        $conn = $GLOBALS['connect'];
+        $stmt = mysqli_prepare($conn, $sql);
+
+        if($stmt) {
+            mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+            $execute = mysqli_stmt_execute($stmt);
+
+            if($execute) {
+                $res = mysqli_stmt_affected_rows($stmt);
+                mysqli_stmt_close($stmt);
+                return $res;
+            } else {
+                mysqli_stmt_close($stmt);
+                die("Query cannot be executed - Insert");
+            }
+            
+        }else {
+            die("Query cannot be prepared - Insert");
+        }
+
+        return false;
+    }
+    function delete($sql, $values, $datatypes) {
+        $conn = $GLOBALS['connect'];
+        $stmt = mysqli_prepare($conn, $sql);
+
+        if($stmt) {
+            mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+            $execute = mysqli_stmt_execute($stmt);
+
+            if($execute) {
+                $res = mysqli_stmt_affected_rows($stmt);
+                mysqli_stmt_close($stmt);
+                return $res;
+            } else {
+                mysqli_stmt_close($stmt);
+                die("Query cannot be executed - Delete");
+            }
+            
+        }else {
+            die("Query cannot be prepared - Delete");
+        }
+
+        return false;
+    }
+
+
 ?>

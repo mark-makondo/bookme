@@ -127,6 +127,21 @@
                                 </div>
                             </div>
                         </div>
+                    </div> 
+
+                     <!-- MANAGE TEAM SETTINGS -->
+                     <div class="card general-settings border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h5 class="card-title mb-0">Team Management</h5>
+                                <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#add-team-setting">
+                                    <span class="d-flex gap-1 align-items-center justify-content-between"><i class="bi bi-plus-square"></i> Add</span>
+                                </button>
+                            </div>
+                            <div class="row" id="team-data">
+                                <!-- LOGIC DATA WILL AUTO INSERT VALUES HERE -->
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -141,7 +156,7 @@
         <form name="form-settings" id="general-settings-form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">General Settings</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">View/Update General Settings</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -169,7 +184,7 @@
         <form name="form-contact-settings" id="contact-settings-form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Contact Settings</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">View/Update Contact Settings</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -235,6 +250,34 @@
                         class="btn text-secondary shadow-none" 
                         data-bs-dismiss="modal"
                     >CANCEL</button>
+                    <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- MANAGE TEAM SETTINGS MODAL -->
+<div class="modal fade" id="add-team-setting" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <form name="form-team-add-settings" id="manage-team-settings-form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Team Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Name</label>
+                            <input type="text" name="member_name" class="form-control shadow-none" id="member-name-input" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Picture</label>
+                            <input type="file" accept="[.jpg, .png, .webp, .jpeg]" name="member_picture" class="form-control shadow-none" id="member-picture-input" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="onAddTeamSettingsModalCancel(member_name, member_picture)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
                     <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                 </div>
             </div>
