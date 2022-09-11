@@ -18,3 +18,4 @@
         document.body.append(element);
     }
 </script>
+<script src="js/global-script.js" defer></script>

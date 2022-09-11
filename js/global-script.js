@@ -1,7 +1,6 @@
 let generalData,  
     contactDetailsData;
 
-// GENERAL
 let siteTitle = document.getElementsByClassName('site-title'),
     siteAbout = document.getElementsByClassName('site-about'),
     facebook = document.getElementsByClassName('facebook'),
@@ -21,7 +20,7 @@ function queryAll(elements = [], callback = ()=> {}) {
         const el = elements[i];
         el && callback(el);
     }
-}
+};
 
 const getGeneral = () => new Promise((res)=> {
     let xhr = new XMLHttpRequest();
@@ -38,7 +37,7 @@ const getGeneral = () => new Promise((res)=> {
 
         res({ loaded: true });
     }
-})
+});
 
 const getContact = () => new Promise((res) => {
     let xhr = new XMLHttpRequest();
@@ -62,12 +61,9 @@ const getContact = () => new Promise((res) => {
 
         res({ loaded: true });
     }
-})
+});
 
-window.onload = async function() {
-    await getGeneral();
-    await getContact();
-
+(function autoCorrectNavLink() {
     const getFileNameFromURL = (str) => str.split('/').pop().split('.')[0];
 
     let navbar = document.getElementById('main-navbar'),
@@ -79,5 +75,10 @@ window.onload = async function() {
 
         if(hasEqualHref) element.classList.add('active');
         else element.classList.remove('active');
-    }
+    };
+})();
+
+window.onload = async function() {
+    await getGeneral();
+    await getContact();
 }

@@ -2,11 +2,12 @@
     // FRONTEND DATA
     define('SITE_URL', 'http://127.0.0.1/book-me/');
     define('MEMBERS_IMG_PATH', SITE_URL.'images/members/');
+    define('CAROUSEL_IMG_PATH', SITE_URL.'images/carousel/');
 
     // BACKEND PROCESS DATA
     define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'].'/book-me/images/');
-    define('ABOUT_FOLDER', 'about/');
     define('MEMBERS_FOLDER', 'members/');
+    define('CAROUSEL_FOLDER', 'carousel/');
 
     function redirect($url) {
         echo "<script>
