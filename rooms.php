@@ -3,6 +3,8 @@
     <head>
         <?php include 'inc/head-meta.php' ?>
         <?php include 'inc/links.php' ?>
+        <?php include 'inc/scripts.php' ?>
+
     </head>
     <body class="p-rooms bg-light">
         <?php include 'inc/header.php' ?>

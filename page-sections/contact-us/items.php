@@ -1,36 +1,36 @@
 <div class="container">
     <div class="row gap-3">
         <div class="bg-white rounded shadow col-lg-6 col-md-6 mb-5 p-4 gap-3 d-flex flex-column" style="flex: 1;">
-            <iframe height="320" class="w-100 rounded" src="https://www.google.com/maps/d/embed?mid=1t9Rl_ajhtJOwh70DwL6-CcVVM2Q&hl=en&ehbc=2E312F" loading="lazy"></iframe>
+            <iframe height="320" class="w-100 rounded iframe" loading="lazy"></iframe>
             <div>
                 <h5>Address</h5>
-                <a href="#" target="_blank" class="d-inline-block text-decoration-none text-dark mb-2"><i class="bi bi-geo-alt-fill"></i> Cavite, Philippines</a>
+                <a href="#" target="_blank" class="d-inline-block text-decoration-none text-dark mb-2 address"><i class="bi bi-geo-alt-fill"></i> </a>
             </div>
             <div class="d-flex flex-column gap-1">
                 <h5>Call Us</h5>
-                <a href="tel: +63123456789" class="d-inline-block mb-2 text-decoration-none text-dark">
-                    <i class="bi bi-telephone-fill"></i>+63123456789
+                <a href="tel: +63123456789" class="d-inline-block mb-2 text-decoration-none text-dark pn1">
+                    <i class="bi bi-telephone-fill"></i>
                 </a>
-                <a href="tel: +63123456789" class="d-inline-block text-decoration-none text-dark">
-                    <i class="bi bi-telephone-fill"></i>+933123456389
+                <a href="tel: +63123456789" class="d-inline-block text-decoration-none text-dark pn2">
+                    <i class="bi bi-telephone-fill"></i>
                 </a>
             </div>
             <div>
                 <h5>Email</h5>
-                <a href="mailto: sample@mail.com" class="d-inline-block text-decoration-none text-dark">
-                    <i class="bi bi-envelope-fill"></i>  sample@mail.com
+                <a href="mailto: sample@mail.com" class="d-inline-block text-decoration-none text-dark email">
+                    <i class="bi bi-envelope-fill"></i>
                 </a>
             </div>
             <div class="d-flex flex-column gap-2">
                 <h5>Follow Us</h5>
                 <div class="d-flex gap-2">
-                    <a href="#" class="d-inline-block text-dark me-2 text-decoration-none fs-5">
+                    <a href="#" class="d-inline-block text-dark me-2 text-decoration-none fs-5 facebook">
                         <i class="bi bi-facebook"></i> 
                     </a>
-                    <a href="#" class="d-inline-block text-dark me-2 text-decoration-none fs-5">
+                    <a href="#" class="d-inline-block text-dark me-2 text-decoration-none fs-5 twitter">
                         <i class="bi bi-twitter"></i> 
                     </a>
-                    <a href="#" class="d-inline-block text-dark me-2 text-decoration-none fs-5">
+                    <a href="#" class="d-inline-block text-dark me-2 text-decoration-none fs-5 instagram">
                         <i class="bi bi-instagram"></i> 
                     </a>
                 </div>

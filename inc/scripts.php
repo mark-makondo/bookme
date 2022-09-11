@@ -5,3 +5,4 @@
 
 <!-- My Scripts -->
 <script src="js/swiper.js" defer></script>
+<script src="js/global-script.js" defer></script>

@@ -3,6 +3,7 @@
     <head>
         <?php include 'inc/head-meta.php' ?>
         <?php include 'inc/links.php' ?>
+        <?php include 'inc/scripts.php' ?>
 
         <link href="stylesheet/contact-us.css" rel="stylesheet" type="text/css">
     </head>

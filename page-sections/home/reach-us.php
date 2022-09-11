@@ -4,31 +4,31 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
-                <iframe height="320" class="w-100 rounded" src="https://www.google.com/maps/d/embed?mid=1t9Rl_ajhtJOwh70DwL6-CcVVM2Q&hl=en&ehbc=2E312F" loading="lazy"></iframe>
+                <iframe height="320" class="w-100 rounded iframe" loading="lazy"></iframe>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="bg-white p-4 rounded mb-4 d-flex flex-column">
                     <h5>Call Us</h5>
                     <a href="tel: +63123456789" class="d-inline-block mb-2 text-decoration-none text-dark">
-                        <i class="bi bi-telephone-fill"></i>+63123456789
+                        <i class="bi bi-telephone-fill pn1"></i>
                     </a>
                     <a href="tel: +63123456789" class="d-inline-block text-decoration-none text-dark">
-                        <i class="bi bi-telephone-fill"></i>+93312345638
+                        <i class="bi bi-telephone-fill pn2"></i>
                     </a>
                 </div>
                 <div class="bg-white p-4 rounded mb-4 flex-column">
                     <h5>Follow Us</h5>
-                    <a href="#" class="d-inline-block mb-3">
+                    <a href="#" class="d-inline-block mb-3 facebook">
                         <span class="badge bg-light text-dark fs-6 p-2">
                             <i class="bi bi-facebook"></i> Facebook
                         </span>
                     </a>
-                    <a href="#" class="d-inline-block mb-3">
+                    <a href="#" class="d-inline-block mb-3 twitter">
                         <span class="badge bg-light text-dark fs-6 p-2">
-                            <i class="bi bi-twitter"></i> Twiiter
+                            <i class="bi bi-twitter"></i> Twiter
                         </span>
                     </a>
-                    <a href="#" class="d-inline-block">
+                    <a href="#" class="d-inline-block instagram">
                         <span class="badge bg-light text-dark fs-6 p-2">
                             <i class="bi bi-instagram"></i> Instagram
                         </span>
