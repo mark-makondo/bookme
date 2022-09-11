@@ -44,7 +44,8 @@ new Swiper(".testimonials-swiper-container", {
 new Swiper(".management-swiper-container", {
   slidesPerView: 4,
   spaceBetween: 40,
-  loop: true,
+  loop: false,
+  grabCursor: true,
   pagination: {
     el: ".swiper-pagination",
   },
