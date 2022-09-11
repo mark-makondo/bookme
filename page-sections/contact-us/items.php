@@ -37,28 +37,28 @@
             </div>
         </div>
         <div class="bg-white rounded shadow col-lg-6 col-md-6 mb-5 p-4">
-            <form class="d-flex flex-column gap-2">
+            <form method="POST" class="d-flex flex-column gap-2" id="contact-us-send-form">
                 <h5>Send a message</h5>
                 <div>
                     <label class="form-label" style="font-weight: 500;">Name</label>
-                    <input type="text" class="form-control shadow-none" placeholder="Enter your full name">
+                    <input name="name" type="text" class="form-control shadow-none" placeholder="Enter your full name" required>
                 </div>
                 <div>
                     <label class="form-label" style="font-weight: 500;">Email</label>
-                    <input type="email" class="form-control shadow-none" placeholder="mail@sample.com">
+                    <input name="email" type="email" class="form-control shadow-none" placeholder="mail@sample.com" required>
                 </div>
                 <div>
                     <label class="form-label" style="font-weight: 500;">Subject</label>
-                    <input type="text" class="form-control shadow-none" placeholder="Type your email subject">
+                    <input name="subject" type="text" class="form-control shadow-none" placeholder="Type your email subject" required>
                 </div>
                 <div>
                     <label class="form-label" style="font-weight: 500;">Message</label>
-                    <textarea class="form-control shadow-none" rows="5" placeholder="Type your Message" style="resize: none;"></textarea>
+                    <textarea name="message" class="form-control shadow-none" rows="5" placeholder="Type your Message" style="resize: none;" required></textarea>
                 </div>
-                <button type="submit" class="btn text-white custom-bg d-inline-block">
+                <button type="submit" name="contact-us-send" class="btn text-white custom-bg d-inline-block">
                     SEND
                 </button>
             </form>
-    </div>
+        </div>
     </div>
 </div>

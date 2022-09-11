@@ -9,8 +9,10 @@
     </head>
     <body class="p-facilities bg-light">
         <?php include 'inc/header.php' ?>
-        <?php include 'page-sections/facilities/header.php' ?>
-        <?php include 'page-sections/facilities/items.php' ?>
-        <?php include 'inc/footer.php' ?>
+        <div class="main-content">
+            <?php include 'page-sections/facilities/header.php' ?>
+            <?php include 'page-sections/facilities/items.php' ?>
+            <?php include 'inc/footer.php' ?>
+        </div>
     </body>
 </html>

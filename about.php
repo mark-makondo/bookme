@@ -1,3 +1,8 @@
+<?php
+  include 'admin/inc/db_config.php';
+  include 'admin/inc/essentials.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,11 +15,11 @@
     </head>
     <body class="p-about bg-light">
         <?php include 'inc/header.php' ?>
-        
-        <?php include 'page-sections/about/header.php' ?>
-        <?php include 'page-sections/about/content.php' ?>
-        <?php include 'page-sections/about/management.php' ?>
-
-        <?php include 'inc/footer.php' ?>
+        <div class="main-content">
+            <?php include 'page-sections/about/header.php' ?>
+            <?php include 'page-sections/about/content.php' ?>
+            <?php include 'page-sections/about/management.php' ?>
+            <?php include 'inc/footer.php' ?>
+        </div>
     </body>
 </html>

@@ -21,6 +21,10 @@
         }
         return $data;
     }
+    function simpleQuery($query) {
+        $conn = $GLOBALS['connect'];
+        return mysqli_query($conn, $query);
+    }
     function select($sql, $values, $datatypes) {
         $conn = $GLOBALS['connect'];
         $stmt = mysqli_prepare($conn, $sql);
@@ -48,6 +52,12 @@
         $con = $GLOBALS['connect'];
         $res = mysqli_query($con, "SELECT * FROM $table");
         return $res;
+    }
+    function selectAllByOrder($table, $order, $orderType = 'ASC') {
+        $con = $GLOBALS['connect'];
+        $type = $orderType == 'ASC' ? 'ASC' : 'DESC';
+
+        return mysqli_query($con, "SELECT * FROM $table ORDER BY $order $type");
     }
     function update($sql, $values, $datatypes) {
         $conn = $GLOBALS['connect'];

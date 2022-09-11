@@ -26,7 +26,7 @@
         };
     }
 
-    function customAlert($type = 'success', $message, $class) {
+    function customAlert(string $message,string $class,string $type = 'success') {
         $typeClass = ($type == 'success') ? "alert-success" : 'alert-warning'; 
 
         echo <<< alert
@@ -37,7 +37,7 @@
         alert;
     }
 
-    function uploadImage($image, $folder) {
+    function uploadImage(string $image, string $folder) {
         $validMime = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
         $imageMime = $image['type'];
 
@@ -58,7 +58,7 @@
         }
     }
 
-    function deleteImage($image, $folder) {
+    function deleteImage(string $image,string $folder) {
         if(unlink(UPLOAD_IMAGE_PATH.$folder.$image)) 
             return true;
         return false;

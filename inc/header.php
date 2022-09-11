@@ -1,8 +1,3 @@
-<?php
-  include 'admin/inc/db_config.php';
-  include 'admin/inc/essentials.php';
-?>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-4 py-lg-2 shadow-sm sticky-top" id="main-navbar">
   <div class="container-fluid p-0">
     <a class="navbar-brand me-5 fw-bold fs-3 h-font site-title" href="index.php"></a>
