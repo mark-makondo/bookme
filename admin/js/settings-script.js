@@ -230,7 +230,6 @@ function addMember() {
     xhr.open("POST", "ajax/settings_crud.php", true);
     
     xhr.onload = function() {
-        console.info(this.responseText);
         let teamSettingsAddModalEl = document.getElementById('add-team-setting');
         let teamSettingsAddModal = bootstrap.Modal.getInstance(teamSettingsAddModalEl);
 

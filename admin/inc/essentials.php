@@ -3,11 +3,13 @@
     define('SITE_URL', 'http://127.0.0.1/book-me/');
     define('MEMBERS_IMG_PATH', SITE_URL.'images/members/');
     define('CAROUSEL_IMG_PATH', SITE_URL.'images/carousel/');
+    define('FACILITIES_IMG_PATH', SITE_URL.'images/facilities/');
 
     // BACKEND PROCESS DATA
     define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'].'/book-me/images/');
     define('MEMBERS_FOLDER', 'members/');
     define('CAROUSEL_FOLDER', 'carousel/');
+    define('FACILITIES_FOLDER', 'facilities/');
 
     function redirect($url) {
         echo "<script>
@@ -37,9 +39,13 @@
         alert;
     }
 
-    function uploadImage(string $image, string $folder) {
+    function uploadImage($image, $folder, $customMime = []) {
         $validMime = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
         $imageMime = $image['type'];
+        
+        if(count($customMime)) {
+            $validMime = $customMime; 
+        }
 
         if(!in_array($imageMime, $validMime)) {
             return 'inv_img';   // invalid mime type
@@ -56,6 +62,11 @@
                 return 'upd_failed';
             }
         }
+    }
+    
+    function uploadSVGImage($image, $folder) {
+        $validMime = ['image/svg+xml'];
+        return uploadImage($image, $folder, $validMime);
     }
 
     function deleteImage(string $image,string $folder) {
