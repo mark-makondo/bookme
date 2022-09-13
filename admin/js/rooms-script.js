@@ -93,7 +93,7 @@ function getRoom(id = '') {
 
     xhr.onload = function(){
         const { room, features, facilities } = JSON.parse(this.responseText);
-
+        console.info(room.name, { features, facilities, facilitiesInputs })
         const facilitiesTemp = facilities.map(facility=> facility[0]);
         const featuresTemp = features.map(feature=> feature[0]);
 
