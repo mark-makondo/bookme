@@ -62,8 +62,12 @@ function removeFacility(id) {
     
     xhr.onload = function() {
         if(this.responseText) {
-            customAlert('success', 'Row removed succesfully.', 'bottom-alert');
-            getFacilities();
+            if(this.responseText == 'err-in-use') 
+                customAlert('error', 'Unable to remove, facility is currently being used.', 'bottom-alert');
+            else {
+                customAlert('success', 'Row removed succesfully.', 'bottom-alert');
+                getFacilities();
+            }
         }else {
             customAlert('error', 'Failed to remove row. Server is down.', 'bottom-alert');
         }

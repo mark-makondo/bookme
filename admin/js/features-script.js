@@ -50,10 +50,13 @@ function removeFeature(id) {
     xhr.send('sr_no='+id+'&removeFeature');
     
     xhr.onload = function() {
-        console.info(this.responseText)
         if(this.responseText) {
-            customAlert('success', 'Row removed succesfully.', 'bottom-alert');
-            getFeatures();
+            if(this.responseText == 'err-in-use') 
+                customAlert('error', 'Unable to remove, feature is currently being used.', 'bottom-alert');
+            else {
+                customAlert('success', 'Row removed succesfully.', 'bottom-alert');
+                getFeatures();
+            }
         }else {
             customAlert('error', 'Failed to remove row. Server is down.', 'bottom-alert');
         }

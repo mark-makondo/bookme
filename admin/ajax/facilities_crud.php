@@ -49,17 +49,23 @@
         $values = [$frmData['sr_no']];
 
         $selectQuery = "SELECT * FROM `facilities` WHERE `sr_no`=?";
+        $checkFacilityQuery = "SELECT * FROM `room_facilities` WHERE `facilities_id`=?";
         $deleteQuery = "DELETE FROM `facilities` WHERE `sr_no`=?";
-
+        
         $selectRes = select($selectQuery, $values, 'i');
-        $deleteRes = delete($deleteQuery, $values, 'i');
+        $checkResult = select($checkFacilityQuery, $values, 'i');
 
-        $facility = mysqli_fetch_assoc($selectRes);
+        if(mysqli_num_rows($checkResult))
+            echo 'err-in-use';
+        else {
+            $deleteRes = delete($deleteQuery, $values, 'i');
+            $facility = mysqli_fetch_assoc($selectRes);
 
-        if($deleteRes) {
-            $deleteImageRes = deleteImage($facility['icon'], FACILITIES_FOLDER);
-            if($deleteImageRes) echo 1;
-            else echo 0;
-        };
+            if($deleteRes) {
+                $deleteImageRes = deleteImage($facility['icon'], FACILITIES_FOLDER);
+                if($deleteImageRes) echo 1;
+                else echo 0;
+            };
+        }
     }
 ?>

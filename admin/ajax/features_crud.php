@@ -40,6 +40,12 @@
         $values = [$frmData['sr_no']];
         $dataType = "i";
         
+        $checkFeatureQuery = "SELECT * FROM `room_features` WHERE `feature_id`=?";
+        $checkResult = select($checkFeatureQuery, $values, 'i');
+
+        if(mysqli_num_rows($checkResult))
+            echo 'err-in-use';
+
         $res = delete($q, $values, $dataType);
 
         echo $res;
