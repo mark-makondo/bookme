@@ -52,10 +52,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Picture</label>
-                            <input type="file" accept="[.jpg, .png, .webp, .jpeg]" name="carousel_picture" class="form-control shadow-none" id="carousel-picture-input" required>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Picture</label>
+                        <input type="file" accept="[.jpg, .png, .webp, .jpeg]" name="carousel_picture" class="form-control shadow-none" id="carousel-picture-input" required>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" onclick="onAddImageModalCancel(carousel_picture)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>

@@ -10,6 +10,11 @@
     $isDeleteRoomRequest = isset($_POST['removeRoom']);
     $isChangeStatusRoomRequest = isset($_POST['changeStatus']);
     $isUpdateRoomRequest = isset($_POST['updateRoom']);
+
+    $isGetImagesRoomRequest = isset($_POST['getImages']);
+    $isAddImageRoomRequest = isset($_POST['addImage']);
+    $isRemoveImageRoomRequest = isset($_POST['removeImage']);
+    $isChangeThumbRoomRequest = isset($_POST['changeThumb']);
     
     $frmData = filteration($_POST);
 
@@ -36,8 +41,6 @@
         $path = FACILITIES_IMG_PATH;
 
         while($row = mysqli_fetch_assoc($q)) {
-            $rowjson = json_encode($row);
-
             $delete = "<a style='min-width: 4rem;' href='#' onclick='removeRoom($row[sr_no])' class='btn btn-sm rounded-pill btn-danger'>
                 Delete</a>" ;
 
@@ -62,6 +65,9 @@
                     <td>
                         <button type="button" onclick="getRoom($row[sr_no])" class="btn btn-primary shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#edit-room-modal-setting">
                             <span class="d-flex gap-1 align-items-center justify-content-between"><i class="bi bi-pencil-square"></i></span>
+                        </button>
+                        <button type="button" onclick="onImageBtnClick('$row[sr_no]','$row[name]')" class="btn btn-info shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#image-room-modal-setting">
+                            <i class="bi bi-images"></i>
                         </button>
                         <button type="button"  onclick='removeRoom($row[sr_no])' class="btn btn-danger shadow-none btn-sm">
                             <span class="d-flex gap-1 align-items-center justify-content-between"><i class="bi bi-trash-fill"></i></span>
@@ -99,17 +105,22 @@
         else echo 0;
     }
     if($isDeleteRoomRequest) {
+        $checkRoomImage = "SELECT * FROM `room_images` WHERE `room_id`=?";
         $q1 = "DELETE FROM `room_features` WHERE `room_id`=?";
         $q2 = "DELETE FROM `room_facilities` WHERE `room_id`=?";
         $q3 = "DELETE FROM `rooms` WHERE `sr_no`=?";
         
         $values = [$frmData['sr_no']];
+        $checkResult = select($checkRoomImage, $values, 'i');
 
-        $res = delete($q1, $values, 'i');
-        $res = delete($q2, $values, 'i');
-        $res = delete($q3, $values, 'i');
-        
-        echo $res;
+        if(mysqli_num_rows($checkResult)) echo 'room-image-exist';
+        else {
+            $res = delete($q1, $values, 'i');
+            $res = delete($q2, $values, 'i');
+            $res = delete($q3, $values, 'i');
+            
+            echo $res;
+        }
     }
     if($isChangeStatusRoomRequest) {
         $sr_no = $frmData['sr_no'];
@@ -160,5 +171,85 @@
 
         if($flag) echo 1;
         else echo 0;
+    }
+    if($isGetImagesRoomRequest) {
+        $selectQuery = "SELECT * FROM `room_images` WHERE `room_id`=?";
+        $selectRes = select($selectQuery, [$frmData['sr_no']],'i');
+
+        $path = ROOMS_IMG_PATH;
+
+        while($row = mysqli_fetch_assoc($selectRes)) {
+            if($row['thumb']==1) {
+                $status = "<button type='button' onclick='onThumbClick($row[sr_no], 0)' class='btn btn-warning btn-sm shadow-none'>Unset</button>";
+            }else $status = "<button type='button' onclick='onThumbClick($row[sr_no], 1)' class='btn btn-dark btn-sm shadow-none'>Set as thumb</button>";
+
+            echo <<< data
+                <tr>
+                    <td width="70%"><img src="$path$row[image]" width="300"/></td>
+                    <td width="20%">$status</td>
+                    <td width="10%">
+                        <button type="button" onclick='removeImage($row[sr_no])' class="btn btn-danger shadow-none btn-sm">
+                            <span class="d-flex gap-1 align-items-center justify-content-between"><i class="bi bi-trash-fill"></i></span>
+                        </button>
+                    </td>
+                </tr>
+            data;
+        }
+    }
+    if($isAddImageRoomRequest) {
+        $imageRet = uploadImage($_FILES['image'], ROOMS_FOLDER);
+
+        if($imageRet == 'inv_img' || $imageRet == 'inv_size' || $imageRet == 'upd_fail') {
+            echo $imageRet;
+        }else {
+            $q = 'INSERT INTO `room_images`(`room_id`, `image`) VALUES (?,?)';
+            $values = [$frmData['sr_no'], $imageRet];
+            $dataType = 'is';
+
+            if(insert($q, $values, $dataType)) echo 1;
+            else echo 0;
+        }
+    }
+    if($isRemoveImageRoomRequest) {
+        $frmData = filteration($_POST);
+        $values = [$frmData['sr_no']];
+
+        $selectQuery = "SELECT * FROM `room_images` WHERE `sr_no`=?";
+        $deleteQuery = "DELETE FROM `room_images` WHERE `sr_no`=?";
+        
+        $selectRes = select($selectQuery, $values, 'i');
+        $roomImage = mysqli_fetch_assoc($selectRes);
+        
+        $deleteRes = delete($deleteQuery, $values, 'i');
+
+        if($deleteRes) {
+            $deleteImageRes = deleteImage($roomImage['image'], ROOMS_FOLDER);
+            if($deleteImageRes) echo 1;
+            else echo 0;
+        };
+    }
+    if($isChangeThumbRoomRequest) {
+        $srno = $frmData['sr_no'];
+        $roomId = $frmData['room_id'];
+        $thumb = $frmData['thumb'];
+        $res = false;
+
+        if($thumb == 1) {
+            $updateQueryDisable = "UPDATE `room_images` SET `thumb`=? WHERE `room_id`=?";
+            $updateQueryResult = update($updateQueryDisable, [0, $roomId], 'ii');
+
+            if($updateQueryDisable) {
+                $updateQueryEnable = "UPDATE `room_images` SET `thumb`=? WHERE `sr_no`=?";
+                $res = update($updateQueryEnable, [1, $srno],'ii');
+            }
+        }else {
+            $updateQueryEnable = "UPDATE `room_images` SET `thumb`=? WHERE `sr_no`=?";
+            $res = update($updateQueryEnable, [$thumb, $srno],'ii');
+        }
+        
+        if($res) {
+            if($thumb) echo 'set-thumb';
+            else echo 'unset-thumb';
+        }else echo 0;
     }
 ?>

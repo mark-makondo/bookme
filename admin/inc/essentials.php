@@ -4,12 +4,14 @@
     define('MEMBERS_IMG_PATH', SITE_URL.'images/members/');
     define('CAROUSEL_IMG_PATH', SITE_URL.'images/carousel/');
     define('FACILITIES_IMG_PATH', SITE_URL.'images/facilities/');
+    define('ROOMS_IMG_PATH', SITE_URL.'images/rooms/');
 
     // BACKEND PROCESS DATA
     define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'].'/book-me/images/');
     define('MEMBERS_FOLDER', 'members/');
     define('CAROUSEL_FOLDER', 'carousel/');
     define('FACILITIES_FOLDER', 'facilities/');
+    define('ROOMS_FOLDER', 'rooms/');
 
     function redirect($url) {
         echo "<script>

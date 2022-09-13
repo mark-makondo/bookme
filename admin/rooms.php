@@ -134,10 +134,6 @@
                             <label class="form-label fw-bold">Description</label>
                             <textarea type="text" name="description" class="form-control shadow-none" rows='3' placeholder="Room description" required></textarea>
                         </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label fw-bold">Icon</label>
-                            <input type="file" accept="[.svg]" name="icon" class="form-control shadow-none">
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -226,15 +222,51 @@
                             <label class="form-label fw-bold">Description</label>
                             <textarea type="text" name="description" class="form-control shadow-none" rows='3' placeholder="Room description" required></textarea>
                         </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label fw-bold">Icon</label>
-                            <input type="file" accept="[.svg]" name="icon" class="form-control shadow-none">
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
                     <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- IMAGE ROOM MODAL -->
+<div class="modal fade" id="image-room-modal-setting" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <form id="image-room-modal-form" autocomplete="off">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="image-room-name"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="border-bottom border-3 pb-3 mb-3">
+                        <form id="add-image-form">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Add Image</label>
+                                <input type="file" accept="[.jpg, .png, .webp, .jpeg]" name="image" class="form-control shadow-none" required>
+                            </div>
+                            <button type="submit" class="btn custom-bg text-white shadow-none">ADD</button>
+                        </form>
+                    </div>
+                    <div class="table-responsive-lg" style="height: 350px; overflow-y: scroll;">
+                        <table class="table table-hover border" style="vertical-align: middle;">
+                            <thead class="sticky-top">
+                                <tr class="bg-dark text-light">
+                                    <th scope="col" width="60%">Image</th>
+                                    <th scope="col">Thumb</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="image-table-body">
+                                <!-- CONTENT WILL BE INSERTED HERE DYNAMICALLY -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </form>

@@ -3,6 +3,12 @@ let addRoomForm = document.getElementById('add-room-modal-form'),
     facilitiesTableBody = document.getElementById('rooms-table-body'),
     editRoomInputsEl = roomFormElements(editRoomForm);
 
+let imageRoomForm = document.getElementById('image-room-modal-form'), 
+    image = imageRoomForm.elements['image'],
+    thumb = imageRoomForm.elements['thumb'],
+    imageTableBody = document.getElementById('image-table-body'),
+    imageHeaderName = document.getElementById('image-room-name');
+    
 let selectedRoomRow = '',
     selectedFacilities = [],
     selectedFeatures = [],
@@ -24,6 +30,8 @@ editRoomForm.addEventListener('submit', e => {
     e.preventDefault();
     updateRoom();
 })
+
+//#region --------------- HELPERS
 
 function roomFormElements(formElement) {
     nameInput = formElement.elements['name'],
@@ -53,6 +61,11 @@ function transformCheckedElements(inputElements = []) {
 
     return [...temp];
 }
+
+//#endregion
+
+//#region --------------- ROOMS
+
 function getRooms() {
     const xhr = new XMLHttpRequest();
 
@@ -62,7 +75,6 @@ function getRooms() {
 
     xhr.onload = function() {
         facilitiesTableBody.innerHTML = this.responseText;
-        
     }
 }
 function getRoom(id = '') {
@@ -153,8 +165,12 @@ function removeRoom(id) {
 
     xhr.onload = function() {
         if(this.responseText) {
-            customAlert('success', 'Row removed succesfully.', 'bottom-alert');
-            getRooms();
+            if(this.responseText == 'room-image-exist') {
+                customAlert('success', 'Unable to remove, please remove all the images first', 'bottom-alert');
+            }else {
+                customAlert('success', 'Row removed succesfully.', 'bottom-alert');
+                getRooms();
+            }
         }else {
             customAlert('error', 'Failed to remove row. Server is down.', 'bottom-alert');
         }
@@ -180,8 +196,7 @@ function onStatusClick(id) {
         }
     }
 }
-
-async function updateRoom() {
+function updateRoom() {
     const { facilitiesInputs, featuresInputs } = editRoomInputsEl;
     const formData = new FormData();
     const xhr = new XMLHttpRequest();
@@ -217,8 +232,97 @@ async function updateRoom() {
         }else {
             customAlert('error', 'Server down, please try again later', 'bottom-alert');
         }
+        resetGlobal();
     }
 }
+
+//#endregion
+
+//#region --------------- IMAGES
+
+imageRoomForm.addEventListener('submit', e => {
+    e.preventDefault();
+    addImage();
+})
+
+function onImageBtnClick(id = '', roomName = '') {
+    selectedRoomRow = id;
+    imageHeaderName.innerText = roomName;
+    getImages();
+}
+function getImages() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "ajax/rooms_crud.php");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("sr_no="+selectedRoomRow+"&getImages");
+
+    xhr.onload = function() {
+        imageTableBody.innerHTML = this.responseText;
+    }
+}
+function addImage() {
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    
+    formData.append('image', image.files[0]);
+    formData.append('sr_no', selectedRoomRow);
+    formData.append('addImage', '');
+
+    xhr.open("POST", "ajax/rooms_crud.php");
+    xhr.send(formData);    
+    
+    xhr.onload = function() {
+        if(this.responseText == 'inv_img') 
+            customAlert('error', '<strong>Error!</strong> Only JPG & PNG are allowed.', 'bottom-alert');
+        if(this.responseText == 'inv_size') 
+            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'bottom-alert');
+        if(this.responseText == 'upd_failed') 
+            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'bottom-alert');
+        else {
+            customAlert('success', 'Image added!', 'bottom-alert');
+            imageRoomForm.reset();
+            getImages();
+        }
+
+    }
+}
+function removeImage(id) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "ajax/rooms_crud.php");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("sr_no="+id+"&removeImage");
+
+    xhr.onload = function() {
+        if(this.responseText) {
+            customAlert('success', 'Image removed succesfully.', 'bottom-alert');
+            getImages();
+        }else {
+            customAlert('error', 'Failed to remove image. Server is down.', 'bottom-alert');
+        }
+    }
+}
+function onThumbClick(id, thumb) {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'ajax/rooms_crud.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send('sr_no='+id+"&room_id="+selectedRoomRow+"&thumb="+thumb+'&changeThumb');
+
+    xhr.onload = function() {
+        if(this.responseText) {
+            if(this.responseText == 'set-thumb')
+                customAlert('success', 'Selected image is now a thumbnail', 'bottom-alert');
+            if(this.responseText == 'unset-thumb')
+                customAlert('success', 'Selected image no longer a thumbnail', 'bottom-alert');
+                
+            getImages();
+        }else {
+            customAlert('error', 'Active failed, server is down.', 'bottom-alert');
+        }
+    }
+}
+
+//#endregion
 
 window.onload = function() {
    getRooms();
