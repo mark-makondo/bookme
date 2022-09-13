@@ -244,6 +244,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div id="image-alert"></div>
                     <div class="border-bottom border-3 pb-3 mb-3">
                         <form id="add-image-form">
                             <div class="mb-3">

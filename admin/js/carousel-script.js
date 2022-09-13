@@ -36,13 +36,13 @@ function addImage() {
         carouselAddModal.hide();
         
         if(this.responseText == 'inv_img') 
-            customAlert('error', '<strong>Error!</strong> Only JPG & PNG are allowed.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Only JPG & PNG are allowed.', 'top-right-alert');
         if(this.responseText == 'inv_size') 
-            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'top-right-alert');
         if(this.responseText == 'upd_failed') 
-            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'top-right-alert');
         else {
-            customAlert('success', 'Image added!', 'bottom-alert');
+            customAlert('success', 'Image added!', 'top-right-alert');
             carouselPictureInput.value='';
             getImages();
         }
@@ -57,10 +57,10 @@ function removeImage(val) {
     
     xhr.onload = function() {
         if(this.responseText==1) {
-            customAlert('success', 'Image removed!', 'bottom-alert');
+            customAlert('success', 'Image removed!', 'top-right-alert');
             getImages();
         }else {
-            customAlert('error', '<strong>Error!</strong> Server down!', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Server down!', 'top-right-alert');
         }
     }
     xhr.send('removeImage='+val);

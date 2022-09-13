@@ -41,13 +41,13 @@ function addFacility() {
         modal.hide();
 
         if(this.responseText == 'inv_img') 
-            customAlert('error', '<strong>Error!</strong> Only SVG are allowed.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Only SVG are allowed.', 'top-right-alert');
         if(this.responseText == 'inv_size') 
-            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'top-right-alert');
         if(this.responseText == 'upd_failed') 
-            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'top-right-alert');
         else {
-            customAlert('success', 'Facility added!', 'bottom-alert');
+            customAlert('success', 'Facility added!', 'top-right-alert');
             facilityForm.reset();
             getFacilities();
         }
@@ -63,13 +63,13 @@ function removeFacility(id) {
     xhr.onload = function() {
         if(this.responseText) {
             if(this.responseText == 'err-in-use') 
-                customAlert('error', 'Unable to remove, facility is currently being used.', 'bottom-alert');
+                customAlert('error', 'Unable to remove, facility is currently being used.', 'top-right-alert');
             else {
-                customAlert('success', 'Row removed succesfully.', 'bottom-alert');
+                customAlert('success', 'Row removed succesfully.', 'top-right-alert');
                 getFacilities();
             }
         }else {
-            customAlert('error', 'Failed to remove row. Server is down.', 'bottom-alert');
+            customAlert('error', 'Failed to remove row. Server is down.', 'top-right-alert');
         }
     }
 }

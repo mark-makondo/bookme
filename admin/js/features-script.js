@@ -34,11 +34,11 @@ function addFeature() {
         modal.hide();
 
         if(this.responseText == 1) {
-            customAlert('success', 'Feature added!', 'bottom-alert');
+            customAlert('success', 'Feature added!', 'top-right-alert');
             featureForm.reset();
             getFeatures();
         }else {
-            customAlert('error', 'Server down! please try again later.', 'bottom-alert');
+            customAlert('error', 'Server down! please try again later.', 'top-right-alert');
         }
     }
 }
@@ -52,13 +52,13 @@ function removeFeature(id) {
     xhr.onload = function() {
         if(this.responseText) {
             if(this.responseText == 'err-in-use') 
-                customAlert('error', 'Unable to remove, feature is currently being used.', 'bottom-alert');
+                customAlert('error', 'Unable to remove, feature is currently being used.', 'top-right-alert');
             else {
-                customAlert('success', 'Row removed succesfully.', 'bottom-alert');
+                customAlert('success', 'Row removed succesfully.', 'top-right-alert');
                 getFeatures();
             }
         }else {
-            customAlert('error', 'Failed to remove row. Server is down.', 'bottom-alert');
+            customAlert('error', 'Failed to remove row. Server is down.', 'top-right-alert');
         }
     }
 }

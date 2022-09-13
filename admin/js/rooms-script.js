@@ -148,11 +148,11 @@ function addRoom() {
         modal.hide();
 
         if(this.responseText) {
-            customAlert('success', 'Room successfuly added', 'bottom-alert');
+            customAlert('success', 'Room successfuly added', 'top-right-alert');
             addRoomForm.reset();
             getRooms();
         }else {
-            customAlert('error', 'Server down, please try again later', 'bottom-alert');
+            customAlert('error', 'Server down, please try again later', 'top-right-alert');
         }
     }
 }
@@ -166,13 +166,13 @@ function removeRoom(id) {
     xhr.onload = function() {
         if(this.responseText) {
             if(this.responseText == 'room-image-exist') {
-                customAlert('success', 'Unable to remove, please remove all the images first', 'bottom-alert');
+                customAlert('success', 'Unable to remove, please remove all the images first', 'top-right-alert');
             }else {
-                customAlert('success', 'Row removed succesfully.', 'bottom-alert');
+                customAlert('success', 'Row removed succesfully.', 'top-right-alert');
                 getRooms();
             }
         }else {
-            customAlert('error', 'Failed to remove row. Server is down.', 'bottom-alert');
+            customAlert('error', 'Failed to remove row. Server is down.', 'top-right-alert');
         }
     }
 }
@@ -186,13 +186,13 @@ function onStatusClick(id) {
     xhr.onload = function() {
         if(this.responseText) {
             if(this.responseText == 'active')
-                customAlert('success', 'Room actived', 'bottom-alert');
+                customAlert('success', 'Room actived', 'top-right-alert');
             else
-                customAlert('success', 'Room deactivated', 'bottom-alert');
+                customAlert('success', 'Room deactivated', 'top-right-alert');
             
             getRooms();
         }else {
-            customAlert('error', 'Active failed, server is down.', 'bottom-alert');
+            customAlert('error', 'Active failed, server is down.', 'top-right-alert');
         }
     }
 }
@@ -226,11 +226,11 @@ function updateRoom() {
         modal.hide();
 
         if(this.responseText) {
-            customAlert('success', 'Room successfuly updated', 'bottom-alert');
+            customAlert('success', 'Room successfuly updated', 'top-right-alert');
             editRoomForm.reset();
             getRooms();
         }else {
-            customAlert('error', 'Server down, please try again later', 'bottom-alert');
+            customAlert('error', 'Server down, please try again later', 'top-right-alert');
         }
         resetGlobal();
     }
@@ -273,13 +273,13 @@ function addImage() {
     
     xhr.onload = function() {
         if(this.responseText == 'inv_img') 
-            customAlert('error', '<strong>Error!</strong> Only JPG & PNG are allowed.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Only JPG & PNG are allowed.', 'top-right-alert', 'image-alert');
         if(this.responseText == 'inv_size') 
-            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'top-right-alert', 'image-alert');
         if(this.responseText == 'upd_failed') 
-            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'top-right-alert', 'image-alert');
         else {
-            customAlert('success', 'Image added!', 'bottom-alert');
+            customAlert('success', 'Image added!', 'top-right-alert', 'image-alert');
             imageRoomForm.reset();
             getImages();
         }
@@ -294,10 +294,10 @@ function removeImage(id) {
 
     xhr.onload = function() {
         if(this.responseText) {
-            customAlert('success', 'Image removed succesfully.', 'bottom-alert');
+            customAlert('success', 'Image removed succesfully.', 'top-right-alert', 'image-alert');
             getImages();
         }else {
-            customAlert('error', 'Failed to remove image. Server is down.', 'bottom-alert');
+            customAlert('error', 'Failed to remove image. Server is down.', 'top-right-alert', 'image-alert');
         }
     }
 }
@@ -311,13 +311,13 @@ function onThumbClick(id, thumb) {
     xhr.onload = function() {
         if(this.responseText) {
             if(this.responseText == 'set-thumb')
-                customAlert('success', 'Selected image is now a thumbnail', 'bottom-alert');
+                customAlert('success', 'Selected image is now a thumbnail', 'top-right-alert', 'image-alert');
             if(this.responseText == 'unset-thumb')
-                customAlert('success', 'Selected image no longer a thumbnail', 'bottom-alert');
+                customAlert('success', 'Selected image no longer a thumbnail', 'top-right-alert', 'image-alert');
                 
             getImages();
         }else {
-            customAlert('error', 'Active failed, server is down.', 'bottom-alert');
+            customAlert('error', 'Active failed, server is down.', 'top-right-alert');
         }
     }
 }
