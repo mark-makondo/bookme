@@ -280,7 +280,7 @@ function addImage() {
             customAlert('error', '<strong>Error!</strong> Image upload failed.', 'top-right-alert', 'image-alert');
         else {
             customAlert('success', 'Image added!', 'top-right-alert', 'image-alert');
-            imageRoomForm.reset();
+            image.value = '';
             getImages();
         }
 

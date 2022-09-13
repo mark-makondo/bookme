@@ -237,39 +237,37 @@
 <!-- IMAGE ROOM MODAL -->
 <div class="modal fade" id="image-room-modal-setting" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1">
     <div class="modal-dialog modal-lg">
-        <form id="image-room-modal-form" autocomplete="off">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="image-room-name"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="image-room-name"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="image-alert"></div>
+                <div class="border-bottom border-3 pb-3 mb-3">
+                    <form id="image-room-modal-form" class="d-flex align-items-end justify-content-between" autocomplete="off">
+                        <div class="">
+                            <label class="form-label fw-bold">Add Image</label>
+                            <input type="file" accept="[.jpg, .png, .webp, .jpeg]" name="image" class="form-control shadow-none" required>
+                        </div>
+                        <button type="submit" class="btn custom-bg text-white shadow-none"><i class="bi bi-plus-square"></i> SUBMIT</button>   
+                    </form>
                 </div>
-                <div class="modal-body">
-                    <div id="image-alert"></div>
-                    <div class="border-bottom border-3 pb-3 mb-3">
-                        <form id="add-image-form">
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Add Image</label>
-                                <input type="file" accept="[.jpg, .png, .webp, .jpeg]" name="image" class="form-control shadow-none" required>
-                            </div>
-                            <button type="submit" class="btn custom-bg text-white shadow-none">ADD</button>
-                        </form>
-                    </div>
-                    <div class="table-responsive-lg" style="height: 350px; overflow-y: scroll;">
-                        <table class="table table-hover border" style="vertical-align: middle;">
-                            <thead class="sticky-top">
-                                <tr class="bg-dark text-light">
-                                    <th scope="col" width="60%">Image</th>
-                                    <th scope="col">Thumb</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="image-table-body">
-                                <!-- CONTENT WILL BE INSERTED HERE DYNAMICALLY -->
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="table-responsive-lg" style="height: 350px; overflow-y: scroll;">
+                    <table class="table table-hover border" style="vertical-align: middle;">
+                        <thead class="sticky-top">
+                            <tr class="bg-dark text-light">
+                                <th scope="col" width="60%">Image</th>
+                                <th scope="col">Thumb</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="image-table-body">
+                            <!-- CONTENT WILL BE INSERTED HERE DYNAMICALLY -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
