@@ -16,6 +16,10 @@
             </div
         `
         document.body.append(element);
+        setTimeout(removeAlert, 2000);
+    }
+    function removeAlert() {
+        document.getElementsByClassName('alert')[0].remove();
     }
 </script>
 <script src="js/global-script.js" defer></script>

@@ -50,6 +50,7 @@ function removeFeature(id) {
     xhr.send('sr_no='+id+'&removeFeature');
     
     xhr.onload = function() {
+        console.info(this.responseText)
         if(this.responseText) {
             customAlert('success', 'Row removed succesfully.', 'bottom-alert');
             getFeatures();

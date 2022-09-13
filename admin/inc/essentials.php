@@ -74,4 +74,30 @@
             return true;
         return false;
     }
+
+    function checkMissingItems($tempArray, $findKey, $findArray) {
+        $foundItems = [];
+        $missing = [];
+        
+        foreach ($tempArray as $data) {
+            $toFind = isset($data[$findKey]) ? $data[$findKey] : $findKey;
+            $found = findItem($findArray, fn($el) => ($el == $toFind));
+
+            if($found) array_push($foundItems, $found);
+            else array_push($missing, $toFind);
+        }
+
+        return ['found'=>$foundItems, 'missing'=>$missing];
+    }
+    
+    function findItem($temp, $callback) {
+        $found = false;
+
+        foreach ($temp as $value) {
+            $isFound = $callback($value);
+        
+            if($isFound) $found = $value;
+        }
+        return $found;
+    }
 ?>

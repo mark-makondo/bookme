@@ -12,7 +12,6 @@
         <title>Admin Panel - Facilities</title>
 
         <?php include "inc/links.php" ?>
-
         <?php include "inc/scripts.php" ?>
         <script src="js/facilities-script.js" defer></script>
     </head>
@@ -21,11 +20,10 @@
         <div class="container-fluid admin-panel-facilities__main-content" id="admin-panel-content">
             <div class="row main-content">
                 <div class="col-lg-10 ms-auto p-4">
-
+                    <h3 class="mb-4">FACILITIES</h3>
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                <h5 class="card-title mb-0">Facilities</h5>
+                            <div class="d-flex align-items-center justify-content-end mb-3">
                                 <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#facilities-modal-setting">
                                     <span class="d-flex gap-1 align-items-center justify-content-between"><i class="bi bi-plus-square"></i> Add</span>
                                 </button>

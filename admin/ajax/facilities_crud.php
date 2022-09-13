@@ -45,18 +45,21 @@
         }
     }
     if($isRemoveFacilityRequest) {
-        $frm_data = filteration($_POST);
-        $values = [$frm_data['sr_no']];
-        $pre_q = "SELECT * FROM `facilities` WHERE `sr_no`=?";
-        $res = select($pre_q, $values, 'i');
-        $row = mysqli_fetch_assoc($res);
-        
-        if(deleteImage($row['icon'], FACILITIES_FOLDER)){
-            $q = "DELETE FROM `facilities` WHERE `sr_no`=?";
-            $res = delete($q, $values,'i');
-            echo $res;
-        }else {
-            echo 0;
-        }
+        $frmData = filteration($_POST);
+        $values = [$frmData['sr_no']];
+
+        $selectQuery = "SELECT * FROM `facilities` WHERE `sr_no`=?";
+        $deleteQuery = "DELETE FROM `facilities` WHERE `sr_no`=?";
+
+        $selectRes = select($selectQuery, $values, 'i');
+        $deleteRes = delete($deleteQuery, $values, 'i');
+
+        $facility = mysqli_fetch_assoc($selectRes);
+
+        if($deleteRes) {
+            $deleteImageRes = deleteImage($facility['icon'], FACILITIES_FOLDER);
+            if($deleteImageRes) echo 1;
+            else echo 0;
+        };
     }
 ?>

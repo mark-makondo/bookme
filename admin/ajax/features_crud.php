@@ -4,14 +4,11 @@
 
     verifyUserDashboard();
 
-    // FEATURE -------------------------------- 
     $isGetFeaturesRequest = isset($_POST['getFeatures']);
     $isAddFeatureRequest = isset($_POST['addFeature']);
     $isRemoveFeatureRequest = isset($_POST['removeFeature']);
 
     $frmData = filteration($_POST);
-
-    // FEATURE -------------------------------- 
 
     if($isGetFeaturesRequest) {
         $q = selectAllByOrder('features', 'sr_no', 'DESC');
@@ -43,6 +40,8 @@
         $values = [$frmData['sr_no']];
         $dataType = "i";
         
-        echo delete($q, $values, $dataType);
+        $res = delete($q, $values, $dataType);
+
+        echo $res;
     }
 ?>
