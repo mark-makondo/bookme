@@ -79,14 +79,14 @@ function onShutdownChange(value) {
         // if update success
         if(this.responseText == 1) {
             if(generalData.shutdown == 1) {
-                customAlert('success', 'Site is now available.', 'bottom-alert');
+                customAlert('success', 'Site is now available.', 'top-right-alert');
             }else {
-                customAlert('success', 'Site has been shutdown.', 'bottom-alert');
+                customAlert('success', 'Site has been shutdown.', 'top-right-alert');
             }
 
             getGeneral();
         }else {
-            customAlert('error', 'Something went wrong, please try again later..', 'bottom-alert');
+            customAlert('error', 'Something went wrong, please try again later..', 'top-right-alert');
         }
     }
     
@@ -105,10 +105,10 @@ function onGeneralSettingsModalSave(siteTitleValue, siteAboutValue) {
         generalSettingsEditModal.hide();
 
         if(this.responseText == 1) {
-            customAlert('success', 'Data updated!', 'bottom-alert');
+            customAlert('success', 'Data updated!', 'top-right-alert');
             getGeneral();
         }else {
-            customAlert('error', '<strong>Error!</strong> No changes made.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> No changes made.', 'top-right-alert');
         }
     }
     
@@ -191,10 +191,10 @@ function onContactSettingsSave(queries) {
         contactSettingsEditModal.hide();
 
         if(this.responseText == 1) {
-            customAlert('success', 'Data updated!', 'bottom-alert');
+            customAlert('success', 'Data updated!', 'top-right-alert');
             getContact();
         }else {
-            customAlert('error', '<strong>Error!</strong> No changes made.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> No changes made.', 'top-right-alert');
         }
     }
     xhr.send(xhrData+'&updateContactSettings');
@@ -230,20 +230,19 @@ function addMember() {
     xhr.open("POST", "ajax/settings_crud.php", true);
     
     xhr.onload = function() {
-        console.info(this.responseText);
         let teamSettingsAddModalEl = document.getElementById('add-team-setting');
         let teamSettingsAddModal = bootstrap.Modal.getInstance(teamSettingsAddModalEl);
 
         teamSettingsAddModal.hide();
         
         if(this.responseText == 'inv_img') 
-            customAlert('error', '<strong>Error!</strong> Only JPG & PNG are allowed.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Only JPG & PNG are allowed.', 'top-right-alert');
         if(this.responseText == 'inv_size') 
-            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'top-right-alert');
         if(this.responseText == 'upd_failed') 
-            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'top-right-alert');
         else {
-            customAlert('success', 'Team Member added!', 'bottom-alert');
+            customAlert('success', 'Team Member added!', 'top-right-alert');
             memberNameInput.value='';
             memberPictureInput.value='';
             getMembers();
@@ -260,10 +259,10 @@ function removeMember(val) {
     
     xhr.onload = function() {
         if(this.responseText==1) {
-            customAlert('success', 'Team Member removed!', 'bottom-alert');
+            customAlert('success', 'Team Member removed!', 'top-right-alert');
             getMembers();
         }else {
-            customAlert('error', '<strong>Error!</strong> Server down!', 'bottom-alert');
+            customAlert('error', '<strong>Error!</strong> Server down!', 'top-right-alert');
         }
     }
     xhr.send('removeMember='+val);

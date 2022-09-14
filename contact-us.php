@@ -33,9 +33,9 @@
       $res = insert($q, $values, 'ssss');
 
       if($res == 1) {
-          echo "<script>customAlert('success', 'Message sent succesfully', 'bottom-alert');</script>";
+          echo "<script>customAlert('success', 'Message sent succesfully', 'top-right-alert');</script>";
       }else {
-          echo "<script>customAlert('error', 'Server error, try again later', 'bottom-alert');</script>";
+          echo "<script>customAlert('error', 'Server error, try again later', 'top-right-alert');</script>";
       }
       echo "<script>window.location.href = 'contact-us.php';</script>";
   }

@@ -129,8 +129,8 @@
                         </div>
                     </div> 
 
-                     <!-- MANAGE TEAM SETTINGS -->
-                     <div class="card general-settings border-0 shadow-sm mb-4">
+                    <!-- MANAGE TEAM SETTINGS -->
+                    <div class="card general-settings border-0 shadow-sm mb-4">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <h5 class="card-title mb-0">Team Management</h5>
