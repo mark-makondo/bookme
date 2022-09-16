@@ -1,6 +1,11 @@
 <?php
   include 'admin/inc/db_config.php';
   include 'admin/inc/essentials.php';
+
+  $rooms = select('SELECT * FROM `rooms` WHERE `status`=? ORDER BY `sr_no` DESC', [1], 'i');
+  $roomImages = selectAll('room_images');
+  $images = mysqli_fetch_all($roomImages, MYSQLI_ASSOC);
+  $path = ROOMS_IMG_PATH;
 ?>
 
 <!DOCTYPE html>
