@@ -7,6 +7,8 @@
 <html lang="en">
     <head>
         <?php include 'inc/head-meta.php' ?>
+        <title><?=$setting['site_title']?> - Contact Us</title>
+
         <?php include 'inc/links.php' ?>
         <?php include 'inc/scripts.php' ?>
 

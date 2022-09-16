@@ -12,9 +12,10 @@
 <html lang="en">
     <head>
         <?php include 'inc/head-meta.php' ?>
+        <title><?=$setting['site_title']?> - Rooms</title>
+
         <?php include 'inc/links.php' ?>
         <?php include 'inc/scripts.php' ?>
-
     </head>
     <body class="p-rooms bg-light">
         <?php include 'inc/header.php' ?>

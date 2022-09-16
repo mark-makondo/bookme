@@ -10,6 +10,8 @@
 <html lang="en">
     <head>
         <?php include 'inc/head-meta.php' ?>
+        <title><?=$setting['site_title']?> - Facilities</title>
+
         <?php include 'inc/links.php' ?>
         <?php include 'inc/scripts.php' ?>
                 

@@ -44,6 +44,9 @@
 <html lang="en">
     <head>
         <?php include 'inc/head-meta.php' ?>
+
+        <title><?=$setting['site_title']?> - <?=$room['name']?></title>
+
         <?php include 'inc/links.php' ?>
         <?php include 'inc/scripts.php' ?>
     </head>
@@ -66,6 +69,16 @@
                     <div class="col-lg-7 col-md-12 px-4">
                         <div id="roomCarousel" class="carousel slide h-100" data-bs-ride="carousel">
                             <div class="carousel-inner h-100">
+                                <?php 
+                                    if(mysqli_num_rows($images) <=0) {
+                                        $source = $path."thumbnail.jpg";
+                                        echo <<< def
+                                            <div class="carousel-item h-100 active">
+                                                <img src="$source" class="d-block w-100 rounded h-100" alt="">
+                                            </div>
+                                        def;
+                                    }
+                                ?>
                                 <?php while($img = mysqli_fetch_assoc($images)): ?>
                                     <div class="carousel-item h-100 <?=$index == 0 ? "active" : ""?>">
                                         <img src="<?=$path.$img['image']?>" class="d-block w-100 rounded h-100" alt="">
