@@ -15,8 +15,7 @@
     define('ROOMS_FOLDER', 'rooms/');
     define('USERS_FOLDER', 'users/');
 
-    // API
-    define('SENDGRID_API_KEY', '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');
+    include "./ignore.php";
 
     function redirect($url) {
         echo "<script>
