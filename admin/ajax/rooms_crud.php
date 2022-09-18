@@ -185,9 +185,9 @@
 
             echo <<< data
                 <tr>
-                    <td width="70%"><img src="$path$row[image]" width="300"/></td>
-                    <td width="20%">$status</td>
-                    <td width="10%">
+                    <td><img src="$path$row[image]" width="300" class="img-fluid"/></td>
+                    <td>$status</td>
+                    <td>
                         <button type="button" onclick='removeImage($row[sr_no])' class="btn btn-danger shadow-none btn-sm">
                             <span class="d-flex gap-1 align-items-center justify-content-between"><i class="bi bi-trash-fill"></i></span>
                         </button>

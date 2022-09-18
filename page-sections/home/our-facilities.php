@@ -16,7 +16,7 @@
             <?php endwhile; ?>
             
             <div class="col-lg-12 text-center mt-5">
-                <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Facility</a>
+                <a href="facilities.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Facility</a>
             </div>
         </div>
     </div>

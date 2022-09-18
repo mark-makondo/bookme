@@ -7,6 +7,7 @@
 <html lang="en">
     <head>
         <?php include 'inc/head-meta.php' ?>
+        <title><?=$setting['site_title']?> - About</title>
         
         <?php include 'inc/links.php' ?>
         <link href="stylesheet/about.css" rel="stylesheet" type="text/css">

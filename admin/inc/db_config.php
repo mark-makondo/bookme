@@ -122,7 +122,8 @@
             }
     
             return false;
-        } catch (\Throwable $th) {
+        } catch (\exception $e) {
+            // echo $e->getMessage();
             return false;
         }
     }

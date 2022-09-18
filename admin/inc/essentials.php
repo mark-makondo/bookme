@@ -5,6 +5,7 @@
     define('CAROUSEL_IMG_PATH', SITE_URL.'images/carousel/');
     define('FACILITIES_IMG_PATH', SITE_URL.'images/facilities/');
     define('ROOMS_IMG_PATH', SITE_URL.'images/rooms/');
+    define('USERS_IMG_PATH', SITE_URL.'images/users/');
 
     // BACKEND PROCESS DATA
     define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'].'/book-me/images/');
@@ -12,6 +13,9 @@
     define('CAROUSEL_FOLDER', 'carousel/');
     define('FACILITIES_FOLDER', 'facilities/');
     define('ROOMS_FOLDER', 'rooms/');
+    define('USERS_FOLDER', 'users/');
+
+    include "./ignore.php";
 
     function redirect($url) {
         echo "<script>
@@ -65,6 +69,35 @@
             }
         }
     }
+    function uploadUserImage($image) {
+        $validMime = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+        $imageMime = $image['type'];
+        
+        if(!in_array($imageMime, $validMime)) {
+            return 'inv_img';   // invalid mime type
+        } else if(($image['size']/(1024 * 1024)) > 2){
+            return 'inv_size';  // size greated than 2mb   
+        } else {
+            $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+            $rname = 'IMG_'.random_int(11111,99999).".jpeg";
+            $imgPath = UPLOAD_IMAGE_PATH.USERS_FOLDER.$rname;
+            
+            if($ext == 'png' || $ext == 'PNG') {
+                $img = imagecreatefrompng($image['tmp_name']);
+            }
+            if($ext == 'webp' || $ext == 'WEBP') {
+                $img = imagecreatefromwebp($image['tmp_name']);
+            }else {
+                $img = imagecreatefromjpeg($image['tmp_name']);
+            }
+
+            if(imagejpeg($img,$imgPath,75)) {
+                return $rname;
+            }else {
+                return 'upd_failed';
+            }
+        }
+    }
     
     function uploadSVGImage($image, $folder) {
         $validMime = ['image/svg+xml'];
@@ -101,5 +134,10 @@
             if($isFound) $found = $value;
         }
         return $found;
+    }
+
+    function isStringEqual($str1, $str2) {
+        if($str1 == $str2) return $str1;
+        else false;
     }
 ?>
