@@ -1,79 +1,81 @@
-let facilityForm = document.getElementById('facilities-modal-setting-form'),
+(function(){
+    let facilityForm = document.getElementById('facilities-modal-setting-form'),
     facilityNameInput = facilityForm.elements['facility-name'],
     facilityIconInput = facilityForm.elements['facility-icon'],
     facilityDescriptionInput = facilityForm.elements['facility-description'],
     facilityTableBody = document.getElementById('facility-table-body');
 
-if(facilityForm) {
-    facilityForm.addEventListener('submit', e => {
-        e.preventDefault();
-        addFacility();
-    })
-}
-
-function getFacilities() {
-    const xhr = new XMLHttpRequest();
-
-    xhr.open('POST', 'ajax/facilities_crud.php', true);
-    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-    xhr.send('getFacilities');
-    
-    xhr.onload = function() {
-        facilityTableBody.innerHTML = this.responseText;
+    if(facilityForm) {
+        facilityForm.addEventListener('submit', e => {
+            e.preventDefault();
+            addFacility();
+        })
     }
-}
-function addFacility() {
-    const data = new FormData();
 
-    data.append('name', facilityNameInput.value);
-    data.append('description', facilityDescriptionInput.value);
-    data.append('icon', facilityIconInput.files[0]);
-    data.append('addFacility', '');
+    function getFacilities() {
+        const xhr = new XMLHttpRequest();
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", 'ajax/facilities_crud.php', true);
-    xhr.send(data);
-
-    xhr.onload = function(){
-        let modalEl = document.getElementById('facilities-modal-setting');
-        let modal = bootstrap.Modal.getInstance(modalEl);
-
-        modal.hide();
-
-        if(this.responseText == 'inv_img') 
-            customAlert('error', '<strong>Error!</strong> Only SVG are allowed.', 'top-right-alert');
-        if(this.responseText == 'inv_size') 
-            customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'top-right-alert');
-        if(this.responseText == 'upd_failed') 
-            customAlert('error', '<strong>Error!</strong> Image upload failed.', 'top-right-alert');
-        else {
-            customAlert('success', 'Facility added!', 'top-right-alert');
-            facilityForm.reset();
-            getFacilities();
+        xhr.open('POST', 'ajax/facilities_crud.php', true);
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xhr.send('getFacilities');
+        
+        xhr.onload = function() {
+            facilityTableBody.innerHTML = this.responseText;
         }
     }
-}
-function removeFacility(id) {
-    const xhr = new XMLHttpRequest();
+    function addFacility() {
+        const data = new FormData();
 
-    xhr.open('POST', 'ajax/facilities_crud.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send('sr_no='+id+'&removeFacility');
-    
-    xhr.onload = function() {
-        if(this.responseText) {
-            if(this.responseText == 'err-in-use') 
-                customAlert('error', 'Unable to remove, facility is currently being used.', 'top-right-alert');
+        data.append('name', facilityNameInput.value);
+        data.append('description', facilityDescriptionInput.value);
+        data.append('icon', facilityIconInput.files[0]);
+        data.append('addFacility', '');
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", 'ajax/facilities_crud.php', true);
+        xhr.send(data);
+
+        xhr.onload = function(){
+            let modalEl = document.getElementById('facilities-modal-setting');
+            let modal = bootstrap.Modal.getInstance(modalEl);
+
+            modal.hide();
+
+            if(this.responseText == 'inv_img') 
+                customAlert('error', '<strong>Error!</strong> Only SVG are allowed.', 'top-right-alert');
+            if(this.responseText == 'inv_size') 
+                customAlert('error', '<strong>Error!</strong> Image should be less than 2MB.', 'top-right-alert');
+            if(this.responseText == 'upd_failed') 
+                customAlert('error', '<strong>Error!</strong> Image upload failed.', 'top-right-alert');
             else {
-                customAlert('success', 'Row removed succesfully.', 'top-right-alert');
+                customAlert('success', 'Facility added!', 'top-right-alert');
+                facilityForm.reset();
                 getFacilities();
             }
-        }else {
-            customAlert('error', 'Failed to remove row. Server is down.', 'top-right-alert');
         }
     }
-}
+    function removeFacility(id) {
+        const xhr = new XMLHttpRequest();
 
-window.onload = function() {
-    getFacilities();
-}
+        xhr.open('POST', 'ajax/facilities_crud.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('sr_no='+id+'&removeFacility');
+        
+        xhr.onload = function() {
+            if(this.responseText) {
+                if(this.responseText == 'err-in-use') 
+                    customAlert('error', 'Unable to remove, facility is currently being used.', 'top-right-alert');
+                else {
+                    customAlert('success', 'Row removed succesfully.', 'top-right-alert');
+                    getFacilities();
+                }
+            }else {
+                customAlert('error', 'Failed to remove row. Server is down.', 'top-right-alert');
+            }
+        }
+    }
+
+    window.onload = function() {
+        getFacilities();
+    }
+})()

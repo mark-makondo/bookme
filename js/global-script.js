@@ -1,5 +1,5 @@
 let generalData,  
-    contactDetailsData;
+contactDetailsData;
 
 let siteTitle = document.getElementsByClassName('site-title'),
     siteAbout = document.getElementsByClassName('site-about'),
@@ -12,8 +12,6 @@ let siteTitle = document.getElementsByClassName('site-title'),
     email = document.getElementsByClassName('email'),
     gmap = document.getElementsByClassName('gmap'),
     iframe = document.getElementsByClassName('iframe');
-
-let aboutSwiperEl = document.querySelector('.management-swiper-container');
 
 function queryAll(elements = [], callback = ()=> {}) {
     for (i=0; i < elements.length; i++) { 
@@ -67,7 +65,7 @@ const getContact = () => new Promise((res) => {
     const getFileNameFromURL = (str) => str.split('/').pop().split('.')[0];
 
     let navbar = document.getElementById('main-navbar'),
-        atags = navbar.getElementsByTagName('a');
+        atags = navbar?.getElementsByTagName('a') || [];
 
     for (let i = 0; i < atags.length; i++) {
         const element = atags[i];

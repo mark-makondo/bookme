@@ -15,7 +15,7 @@
     define('ROOMS_FOLDER', 'rooms/');
     define('USERS_FOLDER', 'users/');
 
-    include "./ignore.php";
+    include "ignore.php";
 
     function redirect($url) {
         echo "<script>

@@ -2,8 +2,6 @@
     include "../inc/essentials.php";
     include '../inc/db_config.php';
 
-    verifyUserDashboard();
-
     $isGetGeneralRequest = isset($_POST['getGeneral']);
     $isUpdateGeneralRequest = isset($_POST['updateGeneral']);
     $isUpdateShutdownRequest = isset($_POST['updateShutdown']);

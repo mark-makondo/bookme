@@ -30,3 +30,4 @@
 
 <script src="js/register-script.js" defer></script>
 <script src="js/login-script.js" defer></script>
+<script src="js/forgot-password-script.js" defer></script>

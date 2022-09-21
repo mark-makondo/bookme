@@ -23,8 +23,26 @@
         </li>
       </ul>
       <div class="d-flex gap-1">
-        <button type="button" class="btn btn-outline-dark shadow-none me-lg-2 me-3" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
-        <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal" data-bs-target="#register-modal">Register</button>
+        <?php
+          $isLogin = isset($_SESSION['login']) && $_SESSION['login'] == true;
+          $path = USERS_IMG_PATH;
+        ?>
+        <?php if($isLogin):?>
+            <div class="btn-group">
+                <button type=">button" class="btn btn-outline-dark shadow-none dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                    <img src="<?=$path?><?=$_SESSION['picture']?>" width="25" height="25" class="me-1 rounded">
+                    <span><?=$_SESSION['name']?></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-lg-end">
+                    <li><a class="dropdown-item" href="user/profile.php">Profile</a></li>
+                    <li><a class="dropdown-item" href="user/bookings.php">Bookings</a></li>
+                    <li><a class="dropdown-item" href="user/logout.php">Logout</a></li>
+                </ul>
+            </div>
+        <?php else:?>
+            <button type="button" class="btn btn-outline-dark shadow-none me-lg-2 me-3" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
+            <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal" data-bs-target="#register-modal">Register</button>
+        <?php endif?>
       </div>
     </div>
   </div>
@@ -33,3 +51,4 @@
 <!-- MODAL  -->
 <?php include 'auth/login.php' ?>
 <?php include 'auth/register.php' ?>
+<?php include 'auth/forgot-password.php' ?>
