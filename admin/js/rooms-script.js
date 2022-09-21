@@ -1,4 +1,3 @@
-(function(){
     let addRoomForm = document.getElementById('add-room-modal-form'),
     editRoomForm = document.getElementById('edit-room-modal-form'),
     facilitiesTableBody = document.getElementById('rooms-table-body'),
@@ -328,4 +327,3 @@
     window.onload = function() {
     getRooms();
     };
-})()

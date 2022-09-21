@@ -1,4 +1,3 @@
-(function(){
     let featureForm = document.getElementById('feature-modal-setting-form'),
     featureNameInput = featureForm.elements['feature-name'],
     featureTableBody = document.getElementById('feature-table-body');
@@ -67,4 +66,3 @@
     window.onload = function() {
         getFeatures();
     }
-})()

@@ -1,4 +1,3 @@
-(function(){
     let facilityForm = document.getElementById('facilities-modal-setting-form'),
     facilityNameInput = facilityForm.elements['facility-name'],
     facilityIconInput = facilityForm.elements['facility-icon'],
@@ -78,4 +77,3 @@
     window.onload = function() {
         getFacilities();
     }
-})()

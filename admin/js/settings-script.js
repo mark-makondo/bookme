@@ -1,4 +1,3 @@
-(function(){
     let generalData,  
         contactDetailsData,
         generalSettingsForm = document.getElementById('general-settings-form'),
@@ -278,4 +277,3 @@
         await getContact();
         await getMembers();
     }
-})()

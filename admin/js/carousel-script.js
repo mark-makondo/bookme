@@ -1,4 +1,3 @@
-(function(){
     let carouselModalForm = document.getElementById('carousel-modal-form'),
     carouselPictureInput = document.getElementById('carousel-picture-input');
 
@@ -73,4 +72,3 @@
     window.onload = async function() {
         await getImages();
     }
-})()
