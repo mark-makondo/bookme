@@ -1,3 +1,15 @@
+<?php
+  $isShutdown = $setting['shutdown'];
+
+  if($isShutdown) {
+    echo <<< alertbar
+      <div class="bg-danger text-center p-2 fw-bold" style="color: white;">
+        <i class="bi bi-exclamation-triangle-fill"></i> Bookings are closed
+      </div>    
+    alertbar;
+  }
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-4 py-lg-2 shadow-sm sticky-top" id="main-navbar">
   <div class="container-fluid p-0">
     <a class="navbar-brand me-5 fw-bold fs-3 h-font site-title" href="index.php"></a>

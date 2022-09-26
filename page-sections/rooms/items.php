@@ -10,6 +10,7 @@
                             <?php
                                 $img = findItem($images, fn($data)=> 
                                     ($data['room_id'] ==  $room['sr_no']) && ($data['thumb'] == 1));
+                                $path = ROOMS_IMG_PATH;
                                 
                                 if(isset($img['image'])) 
                                     $img = $img['image'];
@@ -69,7 +70,11 @@
                         </div>
                         <div class="col-md-2 text-center">
                             <h6 class="mb-4"><?=$room['price']?>/ Night</h6>
-                            <a href="<?=$room["sr_no"]?>" class="btn btn-sm text-white w-100 custom-bg shadow-none mb-2">Book Now</a>
+                            <?php if($isShutdown) :?>
+                                <button class="btn btn-sm text-white w-100 btn-secondary shadow-none mb-2" disabled><i class="bi bi-x-circle-fill"></i> Unavailable</button>
+                            <?php else: ?>
+                                <a href="<?=$room["sr_no"]?>" class="btn btn-sm text-white w-100 custom-bg shadow-none mb-2">Book Now</a>
+                            <?php endif?>
                             <a href="room-details.php?id=<?=$room["sr_no"]?>" class="btn btn-sm btn-outline-dark w-100 shadow-none">More Details</a>
                         </div>
                     </div>

@@ -18,7 +18,6 @@
 
     $room = mysqli_fetch_assoc($rooms);
     $images = select('SELECT `image` FROM `room_images` WHERE `room_id`=?', [$id], 'i');
-    $path = ROOMS_IMG_PATH;
     $index = 0;
 
     $testimonials = [
@@ -70,6 +69,8 @@
                         <div id="roomCarousel" class="carousel slide h-100" data-bs-ride="carousel">
                             <div class="carousel-inner h-100">
                                 <?php 
+                                    $path = ROOMS_IMG_PATH;
+
                                     if(mysqli_num_rows($images) <=0) {
                                         $source = $path."thumbnail.jpg";
                                         echo <<< def
@@ -157,7 +158,11 @@
                                         <?=$room['area']?> sq. meter
                                     </span>
                                 </div>     
-                                <a href="<?=$id?>" class="btn w-100 text-white w-100 custom-bg shadow-none">Book Now</a>
+                                <?php if($isShutdown) :?>
+                                    <button class="btn w-100 text-white btn-secondary shadow-none" disabled><i class="bi bi-x-circle-fill"></i> Unavailable</button>
+                                <?php else: ?>
+                                    <a href="<?=$id?>" class="btn w-100 text-white custom-bg shadow-none">Book Now</a>
+                                <?php endif?>
                             </div>
                         </div>
                     </div>

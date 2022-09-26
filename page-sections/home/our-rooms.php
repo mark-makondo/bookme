@@ -78,7 +78,9 @@
                                 </span>
                             </div>
                             <div class="d-flex justify-content-evenly gap-1 mb-2">
-                                <a href="room-details.php?id=<?=$room['sr_no']?>" class="btn btn-sm text-white custom-bg shadow-none">Book Now</a>
+                                <?php if(!$isShutdown) :?>
+                                    <a href="room-details.php?id=<?=$room['sr_no']?>" class="btn btn-sm text-white custom-bg shadow-none">Book Now</a>
+                                <?php endif?>
                                 <a href="room-details.php?id=<?=$room['sr_no']?>" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
                             </div>
                         </div>
